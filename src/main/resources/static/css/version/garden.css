@@ -22,7 +22,7 @@ p,
 }
 
 .topbar-section {
-	border:0;
+    border: 0;
 }
 
 .blog-list .blog-meta.big-meta h4 {
@@ -32,23 +32,23 @@ p,
 }
 
 .footer {
-	background-image: none;
+    background-image: none;
 }
 
 .blog-list-widget .mb-1 {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .newsletter-widget .form-inline .form-control {
-	height: 54px;
+    height: 54px;
 }
 
 .dropdown-menu {
-	border:0;
+    border: 0;
 }
 
 .navbar-inverse .navbar-nav .nav-link, .navbar-nav .nav-link {
-	font-weight: 400;
+    font-weight: 400;
 }
 
 .blog-meta span {
@@ -119,11 +119,11 @@ p,
 .topbar-section a:focus,
 .topbar-section a,
 .topbar-section i {
-	color:#ffffff !important; 
+    color: #ffffff !important;
 }
 
 .footer {
-	background-color: #000000 !important;
+    background-color: #000000 !important;
 }
 
 .small-title,
@@ -140,11 +140,17 @@ p,
 .dmtop,
 .page-link,
 .topbar-section {
-	color:#ffffff !important;
-	background-color: #74a044 !important;
-	border-color: #74a044 !important;
+    color: #ffffff !important;
+    background-color: #74a044 !important;
+    border-color: #74a044 !important;
 }
 
+
+.color-green a {
+
+    margin-right: 5px;
+
+}
 
 .authorbox p a,
 .pp a,

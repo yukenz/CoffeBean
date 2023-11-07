@@ -148,8 +148,10 @@
                 <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
                     <div class="page-wrapper">
                         <div class="blog-title-area">
-                            <span class="color-green" th:text="${postMetadata.getCategories()}">
-                                Gardening
+                            <span class="color-green">
+                                <a href="" title=""
+                                   th:each="category : ${postMetadata.getCategories()}"
+                                   th:text="${category}">Gardening</a>
                             </span>
 
                             <h3 th:text="${postMetadata.getTitle()}">The golden rules you need to know for a positive
@@ -176,7 +178,7 @@
                         </div><!-- end title -->
 
                         <div class="single-post-media">
-                            <img src="/upload/garden_single_01.jpg" alt="" class="img-fluid">
+                            <img src="/static/upload/garden_single_01.jpg" alt="" class="img-fluid">
                         </div><!-- end media -->
 
                         <div class="blog-content" th:utext="${postContent}">
@@ -192,10 +194,9 @@
                         <div class="blog-title-area">
                             <div class="tag-cloud-single">
                                 <span>Tags</span>
-                                <small><a href="#" title="">lifestyle</a></small>
-                                <small><a href="#" title="">colorful</a></small>
-                                <small><a href="#" title="">trending</a></small>
-                                <small><a href="#" title="">another tag</a></small>
+                                <small th:each="tag : ${postMetadata.getTags()}">
+                                    <a href="#" title="" th:text="${tag}">lifestyle</a>
+                                </small>
                             </div><!-- end meta -->
 
                             <div class="post-sharing">
@@ -214,7 +215,7 @@
                             <div class="col-lg-12">
                                 <div class="banner-spot clearfix">
                                     <div class="banner-img">
-                                        <img src="/upload/banner_01.jpg" alt="" class="img-fluid">
+                                        <img src="/static/upload/banner_01.jpg" alt="" class="img-fluid">
                                     </div><!-- end banner-img -->
                                 </div><!-- end banner -->
                             </div><!-- end col -->
@@ -226,7 +227,7 @@
                             <h4 class="small-title" th:text="${postMetadata.getAuthor()}">About author</h4>
                             <div class="row">
                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                                    <img src="/upload/author.jpg" alt="" class="img-fluid rounded-circle">
+                                    <img src="/static/upload/author.jpg" alt="" class="img-fluid rounded-circle">
                                 </div><!-- end col -->
 
                                 <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
@@ -278,7 +279,8 @@
                                     <a href="garden-single.html"
                                        class="list-group-item list-group-item-action flex-column align-items-start">
                                         <div class="w-100 justify-content-between">
-                                            <img src="/upload/garden_sq_09.jpg" alt="" class="img-fluid float-left">
+                                            <img src="/static/upload/garden_sq_09.jpg" alt=""
+                                                 class="img-fluid float-left">
                                             <h5 class="mb-1">5 Beautiful buildings you need to before dying</h5>
                                             <small>12 Jan, 2016</small>
                                         </div>
@@ -287,7 +289,8 @@
                                     <a href="garden-single.html"
                                        class="list-group-item list-group-item-action flex-column align-items-start">
                                         <div class="w-100 justify-content-between">
-                                            <img src="/upload/garden_sq_06.jpg" alt="" class="img-fluid float-left">
+                                            <img src="/static/upload/garden_sq_06.jpg" alt=""
+                                                 class="img-fluid float-left">
                                             <h5 class="mb-1">Let's make an introduction for creative life</h5>
                                             <small>11 Jan, 2016</small>
                                         </div>
@@ -296,7 +299,8 @@
                                     <a href="garden-single.html"
                                        class="list-group-item list-group-item-action flex-column align-items-start">
                                         <div class="w-100 last-item justify-content-between">
-                                            <img src="/upload/garden_sq_02.jpg" alt="" class="img-fluid float-left">
+                                            <img src="/static/upload/garden_sq_02.jpg" alt=""
+                                                 class="img-fluid float-left">
                                             <h5 class="mb-1">Did you see the most beautiful sea in the world?</h5>
                                             <small>07 Jan, 2016</small>
                                         </div>
@@ -309,7 +313,7 @@
                             <h2 class="widget-title">Advertising</h2>
                             <div class="banner-spot clearfix">
                                 <div class="banner-img">
-                                    <img src="/upload/banner_04.jpg" alt="" class="img-fluid">
+                                    <img src="/static/upload/banner_04.jpg" alt="" class="img-fluid">
                                 </div><!-- end banner-img -->
                             </div><!-- end banner -->
                         </div><!-- end widget -->
