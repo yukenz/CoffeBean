@@ -8,8 +8,6 @@ import org.springframework.stereotype.Service;
 @Service
 public interface BlogService {
 
-    String getContent(Node node);
-
     BlogPostMetadata getMetadata(Node node);
 
     BlogPost getBlogPost(String fileName, String permalink);

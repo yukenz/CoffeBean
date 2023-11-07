@@ -1,5 +1,6 @@
 package id.aone.blog.service;
 
+import id.aone.blog.model.Author;
 import id.aone.blog.model.BlogPostMetadata;
 import id.aone.blog.service.interfaces.MarkdownService;
 import lombok.AllArgsConstructor;
@@ -46,7 +47,15 @@ public class MarkdownServiceImpl implements MarkdownService {
     }
 
     @Override
-    public BlogPostMetadata createMetadata(Map<String, List<String>> mapMetaData) {
+    public String getContent(Node node) {
+
+        String render = htmlRenderer.render(node);
+        return render;
+
+    }
+
+    @Override
+    public BlogPostMetadata createBlogPostMetaData(Map<String, List<String>> mapMetaData) {
 
         BlogPostMetadata.BlogPostMetadataBuilder builder = BlogPostMetadata.builder();
 
@@ -106,6 +115,26 @@ public class MarkdownServiceImpl implements MarkdownService {
         }
 
 //        builder.permalink(); Set later
+        return builder.build();
+    }
+
+    @Override
+    public Author createAuthorMetaData(Map<String, List<String>> mapMetaData) {
+
+        Author.AuthorBuilder builder = Author.builder();
+
+        List<String> name = mapMetaData.get("name");
+        if (Objects.nonNull(name)) {
+            name.stream().findFirst()
+                    .ifPresent(builder::name);
+        }
+
+        List<String> photo = mapMetaData.get("photo");
+        if (Objects.nonNull(photo)) {
+            photo.stream().findFirst()
+                    .ifPresent(builder::photo);
+        }
+
         return builder.build();
     }
 }

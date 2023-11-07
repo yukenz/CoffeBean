@@ -1,5 +1,6 @@
 package id.aone.blog.service.interfaces;
 
+import id.aone.blog.model.Author;
 import id.aone.blog.model.BlogPostMetadata;
 import org.commonmark.node.Node;
 import org.springframework.stereotype.Service;
@@ -11,8 +12,13 @@ import java.util.Map;
 @Service
 public interface MarkdownService {
 
+
     Node readMarkdown(BufferedReader inputStream);
 
-    BlogPostMetadata createMetadata(Map<String, List<String>> mapMetaData);
+    public String getContent(Node node);
+
+    BlogPostMetadata createBlogPostMetaData(Map<String, List<String>> mapMetaData);
+
+    Author createAuthorMetaData(Map<String, List<String>> mapMetaData);
 
 }
