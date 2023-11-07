@@ -49,7 +49,7 @@ public class BlogControllerImpl implements BlogController {
          * */
         model.addAttribute("author",
                 authorService.getAuthor(blogPost.getMetadata().getAuthor()
-                ).orElse(new Author())
+                ).orElse(null)
         );
 
 
