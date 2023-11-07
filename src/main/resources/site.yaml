@@ -1,0 +1,8 @@
+name: Awan's Spring Boot Blog
+slug: Do Your Best
+url: http://localhost:8080
+categories:
+  - name: Linux
+    permalink: linux
+  - name: Hackintosh
+    permalink: hackintosh
