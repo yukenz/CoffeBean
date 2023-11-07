@@ -5,6 +5,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+import java.util.Map;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -15,5 +18,11 @@ public class Author {
     private String name;
     private String photo;
     private String description;
+
+    /*
+    * facebook : fb.com
+    * facebook : fb.com
+    * */
+    private Map<String, String> socials;
 
 }

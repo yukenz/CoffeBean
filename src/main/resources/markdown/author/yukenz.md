@@ -2,6 +2,9 @@
 name: Yuyun Purniawan
 photo: /static/upload/author.jpg
 social:
+  - facebook: fb.com
+  - youtube: yt.com
+  - twitter: x.com
 ---
 
 Quisque sed tristique felis. Lorem visit my website amet, consectetur adipiscing elit. Phasellus quis mi auctor,

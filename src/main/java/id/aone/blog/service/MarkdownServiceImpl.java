@@ -12,10 +12,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 @AllArgsConstructor
 public class MarkdownServiceImpl implements MarkdownService {
@@ -134,6 +131,36 @@ public class MarkdownServiceImpl implements MarkdownService {
             photo.stream().findFirst()
                     .ifPresent(builder::photo);
         }
+
+        HashMap<String, String> socialsMedia = new HashMap<>();
+        /* String split to be Map<K,V>*/
+        List<String> socials = mapMetaData.get("social");
+        if (Objects.nonNull(socials)) {
+
+            socials.forEach(social -> {
+
+                /*
+                 * Pastikan jika array bisa di akses pada index 0 dan satu
+                 * jika tidak maka tidak usah ditambah map sosmed nya
+                 * */
+                try {
+
+                    String[] socialMedia = social
+                            .replace(" ", "")
+                            .split(":");
+
+                    String platform = socialMedia[0];
+                    String link = socialMedia[1];
+                    socialsMedia.put(platform, link);
+
+                } catch (ArrayIndexOutOfBoundsException ignored) {
+
+                }
+
+            });
+        }
+        builder.socials(socialsMedia);
+
 
         return builder.build();
     }
