@@ -16,7 +16,8 @@ public class BlogPostMetadata {
     private String title;
     private String author;
     private String publishDate;
-    private String categories;
+    private List<String> categories;
+    private List<String> tags;
     private String summary;
     private String linkFeatureImage;
     private String permalink;

@@ -1,29 +1,20 @@
 package id.aone.blog.service;
 
-import id.aone.blog.exception.PageNotFoundException;
 import id.aone.blog.model.BlogPostMetadata;
 import id.aone.blog.service.interfaces.MarkdownService;
-import id.aone.blog.service.interfaces.ResourceService;
 import lombok.AllArgsConstructor;
 import org.commonmark.node.Node;
 import org.commonmark.parser.Parser;
 import org.commonmark.renderer.html.HtmlRenderer;
-import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 @AllArgsConstructor
 public class MarkdownServiceImpl implements MarkdownService {
@@ -80,9 +71,13 @@ public class MarkdownServiceImpl implements MarkdownService {
         }
 
         List<String> categories = mapMetaData.get("categories");
-        if (Objects.nonNull(categories)) {
-            String categoryJoin = categories.stream().collect(Collectors.joining(","));
-            builder.categories(categoryJoin);
+        if (Objects.nonNull(categories) && !categories.isEmpty()) {
+            builder.categories(categories);
+        }
+
+        List<String> tags = mapMetaData.get("tags");
+        if (Objects.nonNull(tags) && !tags.isEmpty()) {
+            builder.tags(tags);
         }
 
         List<String> summary = mapMetaData.get("summary");
