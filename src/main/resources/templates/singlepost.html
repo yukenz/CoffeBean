@@ -246,16 +246,35 @@
                                     </span>
 
                                     <div class="topsocial">
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i
-                                                class="fa fa-facebook"></i></a>
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Youtube"><i
-                                                class="fa fa-youtube"></i></a>
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i
-                                                class="fa fa-twitter"></i></a>
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Instagram"><i
+                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"
+                                           th:if="${author.getSocials().containsKey('facebook')}"
+                                           th:href="${author.getSocials().get('facebook')}"
+                                        >
+                                            <i class="fa fa-facebook"></i>
+                                        </a>
+                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Youtube"
+                                           th:if="${author.getSocials().containsKey('youtube')}"
+                                           th:href="${author.getSocials().get('youtube')}"
+                                        >
+                                            <i class="fa fa-youtube"></i>
+                                        </a>
+                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"
+                                           th:if="${author.getSocials().containsKey('twitter')}"
+                                           th:href="${author.getSocials().get('twitter')}"
+                                        >
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Instagram"
+                                           th:if="${author.getSocials().containsKey('instagram')}"
+                                           th:href="${author.getSocials().get('instagram')}"
+                                        ><i
                                                 class="fa fa-instagram"></i></a>
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Website"><i
-                                                class="fa fa-link"></i></a>
+                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Website"
+                                           th:if="${author.getSocials().containsKey('website')}"
+                                           th:href="${author.getSocials().get('website')}"
+                                        >
+                                            <i class="fa fa-link"></i>
+                                        </a>
                                     </div><!-- end social -->
 
                                 </div><!-- end col -->
