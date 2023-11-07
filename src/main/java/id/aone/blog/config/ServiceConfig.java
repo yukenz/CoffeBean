@@ -1,10 +1,7 @@
 package id.aone.blog.config;
 
 import id.aone.blog.model.SiteMetadataComponent;
-import id.aone.blog.service.BlogServiceImpl;
-import id.aone.blog.service.CategoryServiceImpl;
-import id.aone.blog.service.MarkdownServiceImpl;
-import id.aone.blog.service.ResourceServiceImpl;
+import id.aone.blog.service.*;
 import id.aone.blog.service.interfaces.*;
 import org.commonmark.parser.Parser;
 import org.commonmark.renderer.html.HtmlRenderer;
@@ -17,10 +14,9 @@ public class ServiceConfig {
     @Bean
     BlogService blogService(
             MarkdownService markdownService,
-            HtmlRenderer htmlRenderer,
             ResourceService resourceService
     ) {
-        return new BlogServiceImpl(markdownService, htmlRenderer, resourceService);
+        return new BlogServiceImpl(markdownService, resourceService);
     }
 
     @Bean
@@ -47,4 +43,12 @@ public class ServiceConfig {
         return new ResourceServiceImpl();
     }
 
+    @Bean
+    AuthorService authorService(
+            MarkdownService markdownService,
+            ResourceService resourceService
+    ) {
+
+        return new AuthorServiceImpl(markdownService, resourceService);
+    }
 }
