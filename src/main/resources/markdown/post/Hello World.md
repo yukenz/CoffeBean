@@ -1,6 +1,6 @@
 ---
 title: Hello World
-author: Awan
+author: yukenz
 image: /awan.jpg
 categories:
   - satu

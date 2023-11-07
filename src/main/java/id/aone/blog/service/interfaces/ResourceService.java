@@ -12,7 +12,8 @@ import java.util.Optional;
 public interface ResourceService {
 
     enum PATH {
-        POST("markdown/post/");
+        POST("markdown/post/"),
+        AUTHOR("markdown/author/");
 
         PATH(String path) {
             this.path = path;
