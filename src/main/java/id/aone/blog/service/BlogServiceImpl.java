@@ -2,6 +2,7 @@ package id.aone.blog.service;
 
 import id.aone.blog.model.BlogPost;
 import id.aone.blog.model.BlogPostMetadata;
+import id.aone.blog.service.interfaces.AuthorService;
 import id.aone.blog.service.interfaces.BlogService;
 import id.aone.blog.service.interfaces.MarkdownService;
 import id.aone.blog.service.interfaces.ResourceService;
@@ -18,16 +19,8 @@ import java.io.BufferedReader;
 public class BlogServiceImpl implements BlogService {
 
     private MarkdownService markdownService;
-    private HtmlRenderer htmlRenderer;
     private ResourceService resourceService;
 
-    @Override
-    public String getContent(Node node) {
-
-        String render = htmlRenderer.render(node);
-        return render;
-
-    }
 
     @Override
     public BlogPostMetadata getMetadata(Node node) {
@@ -35,7 +28,7 @@ public class BlogServiceImpl implements BlogService {
         YamlFrontMatterVisitor visitor = new YamlFrontMatterVisitor();
         node.accept(visitor);
 
-        BlogPostMetadata metadata = markdownService.createMetadata(visitor.getData());
+        BlogPostMetadata metadata = markdownService.createBlogPostMetaData(visitor.getData());
 
         return metadata;
     }
@@ -50,7 +43,7 @@ public class BlogServiceImpl implements BlogService {
 
         Node node = markdownService.readMarkdown(input);
 
-        String content = this.getContent(node);
+        String content = markdownService.getContent(node);
         BlogPostMetadata metadata = this.getMetadata(node);
         metadata.setPermalink(permalink);
 
