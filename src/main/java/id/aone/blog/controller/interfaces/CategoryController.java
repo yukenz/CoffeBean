@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 public interface CategoryController {
 
     @GetMapping(
-            path = "/post/{categoryName}.html"
+            path = "/category/{categoryName}"
     )
-    public String category(
+    String category(
             @PathVariable String categoryName,
             HttpServletRequest request,
             Model model

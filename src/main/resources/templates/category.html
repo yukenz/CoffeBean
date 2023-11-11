@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
+
+<!-- Basic -->
 <head>
-    <!-- Basic -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -16,8 +17,8 @@
     <meta name="author" content="">
 
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon"/>
-    <link rel="apple-touch-icon" href="/static/images/apple-touch-icon.png">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"/>
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
     <!-- Design fonts -->
     <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
@@ -39,11 +40,6 @@
 
     <!-- Version Garden CSS for this template -->
     <link href="/static/css/version/garden.css" rel="stylesheet">
-
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 
 <body>
@@ -100,7 +96,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="logo">
-                        <a href="garden-index.html"><img src="/images/version/garden-logo.png" alt=""></a>
+                        <a href="garden-index.html"><img src="/static/images/version/garden-logo.png" alt=""></a>
                     </div><!-- end logo -->
                 </div>
             </div><!-- end row -->
@@ -119,8 +115,21 @@
                         <li class="nav-item">
                             <a class="nav-link color-green-hover" href="garden-index.html">Home</a>
                         </li>
-                    </ul>
-                    <ul class="navbar-nav" th:each="nav:${navMenu}" th:utext="${nav}">
+                        <li class="nav-item">
+                            <a class="nav-link color-green-hover" href="garden-category.html">Gardening</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link color-green-hover" href="garden-category.html">Outdoor Living</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link color-green-hover" href="garden-category.html">Indoor Living</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link color-green-hover" href="garden-category.html">Shopping Guides</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link color-green-hover" href="garden-contact.html">Contact</a>
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -131,12 +140,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                    <h2><i class="fa fa-leaf bg-green"></i> <span th:text="${siteMetadata.getName()}">BLOG</span></h2>
+                    <h2><i class="fa fa-leaf bg-green"></i> Category by: Gardening</h2>
                 </div><!-- end col -->
                 <div class="col-lg-4 col-md-4 col-sm-12 hidden-xs-down hidden-sm-down">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active">Blog</li>
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">Blog</a></li>
+                        <li class="breadcrumb-item active">Gardening</li>
                     </ol>
                 </div><!-- end col -->
             </div><!-- end row -->
@@ -148,142 +158,139 @@
             <div class="row">
                 <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
                     <div class="page-wrapper">
-                        <div class="blog-title-area">
-                            <span class="color-green">
-                                <a href="" title=""
-                                   th:each="category : ${postMetadata.getCategories()}"
-                                   th:text="${category}">Gardening</a>
-                            </span>
+                        <div class="blog-list clearfix">
 
-                            <h3 th:text="${postMetadata.getTitle()}">The golden rules you need to know for a positive
-                                life</h3>
+                            <div>
 
-                            <div class="blog-meta big-meta">
-                                <small><a href="garden-single.html" title="" th:text="${postMetadata.getPublishDate()}">21
-                                    July, 2017</a></small>
-                                <small><a href="blog-author.html" title="" th:text="${postMetadata.getAuthor()}">by
-                                    Jessica</a></small>
-                                <small><a href="#" title=""><i class="fa fa-eye"></i> 2344</a></small>
-                            </div><!-- end meta -->
+                                <div class="blog-box row"
+                                     th:each="post:${posts}"
+                                >
+                                    <div class="col-md-4">
+                                        <div class="post-media">
+                                            <a href="garden-single.html" title="">
+                                                <img src="/static/upload/garden_sq_01.jpg" alt="" class="img-fluid">
+                                                <div class="hovereffect"></div>
+                                            </a>
+                                        </div><!-- end media -->
+                                    </div><!-- end col -->
 
-                            <div class="post-sharing">
-                                <ul class="list-inline">
-                                    <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i>
-                                        <span class="down-mobile">Share on Facebook</span></a></li>
-                                    <li><a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i>
-                                        <span class="down-mobile">Tweet on Twitter</span></a></li>
-                                    <li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google-plus"></i></a>
-                                    </li>
-                                </ul>
-                            </div><!-- end post-sharing -->
-                        </div><!-- end title -->
+                                    <div class="blog-meta big-meta col-md-8">
 
-                        <div class="single-post-media">
-                            <img src="/static/upload/garden_single_01.jpg" alt="" class="img-fluid">
-                        </div><!-- end media -->
+                                        <span class="bg-aqua"
+                                              th:each="category:${post.getMetadata().getCategories()}"
+                                        >
+                                            <a href="garden-category.html" title=""
+                                               th:text="${category}"
+                                            >Indoor</a>
+                                        </span>
 
-                        <div class="blog-content" th:utext="${postContent}">
-                            <p>In lobortis pharetra mattis. Morbi nec nibh iaculis, <a href="#">bibendum augue a</a>,
-                                ultrices nulla. Nunc velit ante, lacinia id tincidunt eget, faucibus nec nisl. In
-                                mauris purus, bibendum et gravida dignissim, venenatis commodo lacus. Duis
-                                consectetur quis nisi nec accumsan. Pellentesque enim velit, ut tempor turpis.
-                                Mauris felis neque, egestas in lobortis et,iaculis at nunc ac, rhoncus sagittis
-                                ipsum.
-                            </p>
-                        </div><!-- end content -->
+                                        <h4><a href="garden-single.html" title=""
+                                               th:text="${post.getMetadata().getTitle()}">
+                                            TITLE
+                                        </a></h4>
 
-                        <div class="blog-title-area">
-                            <div class="tag-cloud-single">
-                                <span>Tags</span>
-                                <small th:each="tag : ${postMetadata.getTags()}">
-                                    <a th:text="${tag}">lifestyle</a>
-                                </small>
-                            </div><!-- end meta -->
+                                        <p
+                                                th:utext="${post.getContent()}"
+                                        >Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et
+                                            pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enim
+                                            nibh,
+                                            maximus ac felis nec, maximus tempor odio.</p>
+                                        <small><a href="garden-category.html" title=""><i class="fa fa-eye"></i>
+                                            1887</a></small>
+                                        <small><a href="garden-single.html" title=""
+                                                  th:text="${post.getMetadata().getPublishDate()}"
+                                        >11 July, 2017</a></small>
+                                        <small><a href="#" title=""
+                                                  th:text="${post.getMetadata().getAuthor()}"
+                                        >by Matilda</a></small>
+                                    </div><!-- end meta -->
+                                </div><!-- end blog-box -->
+                                <hr class="invis">
+                            </div>
 
-                            <div class="post-sharing">
-                                <ul class="list-inline">
-                                    <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i>
-                                        <span class="down-mobile">Share on Facebook</span></a></li>
-                                    <li><a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i>
-                                        <span class="down-mobile">Tweet on Twitter</span></a></li>
-                                    <li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google-plus"></i></a>
-                                    </li>
-                                </ul>
-                            </div><!-- end post-sharing -->
-                        </div><!-- end title -->
 
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="banner-spot clearfix">
-                                    <div class="banner-img">
-                                        <img src="/static/upload/banner_01.jpg" alt="" class="img-fluid">
-                                    </div><!-- end banner-img -->
-                                </div><!-- end banner -->
-                            </div><!-- end col -->
-                        </div><!-- end row -->
-
-                        <hr class="invis1">
-
-                        <div class="custombox authorbox clearfix" th:if="${author != null}">
-                            <h4 class="small-title">About author</h4>
                             <div class="row">
-                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                                    <img th:src="${author.getPhoto()}"
-                                         src="/static/upload/author.jpg"
-                                         alt=""
-                                         class="img-fluid rounded-circle"
-                                    >
-                                </div><!-- end col -->
-
-                                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
-                                    <h4><a href="#"
-                                           th:text="${postMetadata.getAuthor()} + ' (' + ${author.getName()} +')'"
-                                    >Jessica</a></h4>
-                                    <span th:utext="${author.getDescription()}">
-                                        Quisque sed tristique felis. Lorem <a href="#">visit my website</a> amet,
-                                        consectetur adipiscing elit. Phasellus quis mi auctor, tincidunt nisl eget,
-                                        finibus odio. Duis tempus elit quis risus congue feugiat. Thanks for stop Forest
-                                        Time!
-                                    </span>
-
-                                    <div class="topsocial">
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"
-                                           th:if="${author.getSocials().containsKey('facebook')}"
-                                           th:href="${author.getSocials().get('facebook')}"
-                                        >
-                                            <i class="fa fa-facebook"></i>
-                                        </a>
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Youtube"
-                                           th:if="${author.getSocials().containsKey('youtube')}"
-                                           th:href="${author.getSocials().get('youtube')}"
-                                        >
-                                            <i class="fa fa-youtube"></i>
-                                        </a>
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"
-                                           th:if="${author.getSocials().containsKey('twitter')}"
-                                           th:href="${author.getSocials().get('twitter')}"
-                                        >
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Instagram"
-                                           th:if="${author.getSocials().containsKey('instagram')}"
-                                           th:href="${author.getSocials().get('instagram')}"
-                                        ><i
-                                                class="fa fa-instagram"></i></a>
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Website"
-                                           th:if="${author.getSocials().containsKey('website')}"
-                                           th:href="${author.getSocials().get('website')}"
-                                        >
-                                            <i class="fa fa-link"></i>
-                                        </a>
-                                    </div><!-- end social -->
-
+                                <div class="col-lg-10 offset-lg-1">
+                                    <div class="banner-spot clearfix">
+                                        <div class="banner-img">
+                                            <img src="/static/upload/banner_05.jpg" alt="" class="img-fluid">
+                                        </div><!-- end banner-img -->
+                                    </div><!-- end banner -->
                                 </div><!-- end col -->
                             </div><!-- end row -->
-                        </div><!-- end author-box -->
+
+                            <hr class="invis">
+
+                            <div class="blog-box row">
+                                <div class="col-md-4">
+                                    <div class="post-media">
+                                        <a href="garden-single.html" title="">
+                                            <img src="/static/upload/garden_sq_04.jpg" alt="" class="img-fluid">
+                                            <div class="hovereffect"></div>
+                                        </a>
+                                    </div><!-- end media -->
+                                </div><!-- end col -->
+
+                                <div class="blog-meta big-meta col-md-8">
+                                    <span class="bg-aqua"><a href="garden-category.html" title="">Indoor</a></span>
+                                    <h4><a href="garden-single.html" title="">30 beautiful flowers you can look at in
+                                        offices and workplaces</a></h4>
+                                    <p>Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et
+                                        pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enim nibh,
+                                        maximus ac felis nec, maximus tempor odio.</p>
+                                    <small><a href="garden-category.html" title=""><i class="fa fa-eye"></i>
+                                        4441</a></small>
+                                    <small><a href="garden-single.html" title="">08 July, 2017</a></small>
+                                    <small><a href="#" title="">by Matilda</a></small>
+                                </div><!-- end meta -->
+                            </div><!-- end blog-box -->
+
+                            <hr class="invis">
+
+                            <div class="blog-box row">
+                                <div class="col-md-4">
+                                    <div class="post-media">
+                                        <a href="garden-single.html" title="">
+                                            <img src="/static/upload/garden_sq_05.jpg" alt="" class="img-fluid">
+                                            <div class="hovereffect"></div>
+                                        </a>
+                                    </div><!-- end media -->
+                                </div><!-- end col -->
+
+                                <div class="blog-meta big-meta col-md-8">
+                                    <span class="bg-aqua"><a href="garden-category.html" title="">Indoor</a></span>
+                                    <h4><a href="garden-single.html" title="">Enjoy your living room with small garden
+                                        biblings</a></h4>
+                                    <p>Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et
+                                        pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enim nibh,
+                                        maximus ac felis nec, maximus tempor odio.</p>
+                                    <small><a href="garden-category.html" title=""><i class="fa fa-eye"></i>
+                                        2235</a></small>
+                                    <small><a href="garden-single.html" title="">07 July, 2017</a></small>
+                                    <small><a href="#" title="">by Matilda</a></small>
+                                </div><!-- end meta -->
+                            </div><!-- end blog-box -->
 
 
+                        </div><!-- end blog-list -->
                     </div><!-- end page-wrapper -->
+
+                    <hr class="invis">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination justify-content-start">
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">Next</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div><!-- end col -->
+                    </div><!-- end row -->
                 </div><!-- end col -->
 
                 <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
@@ -356,7 +363,7 @@
                 <div class="col-lg-8 offset-lg-2">
                     <div class="widget">
                         <div class="footer-text text-center">
-                            <a href="index.html"><img src="/images/version/garden-footer-logo.png" alt=""
+                            <a href="index.html"><img src="/static/images/version/garden-footer-logo.png" alt=""
                                                       class="img-fluid"></a>
                             <p>Forest Time is a personal blog for handcrafted, cameramade photography content, fashion
                                 styles from independent creatives around the world.</p>

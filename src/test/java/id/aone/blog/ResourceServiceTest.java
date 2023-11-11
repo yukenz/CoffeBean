@@ -8,8 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.stream.Stream;
 
 @SpringBootTest
 public class ResourceServiceTest {
@@ -42,6 +43,19 @@ public class ResourceServiceTest {
         Assertions.assertDoesNotThrow(() -> {
             blogService.getBlogPost("Hello World", "/asdwd");
         });
+
+    }
+
+    @Test
+    void testDirList() {
+        Stream<Path> pathStream = resourceService.streamDirList(ResourceService.PATH.POST.path());
+
+        Assertions.assertNotNull(pathStream);
+
+        Stream<Path> streamPosts = pathStream.filter(Files::isRegularFile);
+
+        streamPosts.forEach(path -> System.out.println(path.toString()));
+
 
     }
 }
