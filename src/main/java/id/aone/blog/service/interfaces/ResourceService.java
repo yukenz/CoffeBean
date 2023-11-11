@@ -13,7 +13,8 @@ public interface ResourceService {
 
     enum PATH {
         POST("markdown/post/"),
-        AUTHOR("markdown/author/");
+        AUTHOR("markdown/author/"),
+        CATEGORY("markdown/category/");
 
         PATH(String path) {
             this.path = path;
