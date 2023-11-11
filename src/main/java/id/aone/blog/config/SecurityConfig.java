@@ -41,6 +41,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .permitAll()
                         .antMatchers("/static/**")
                         .permitAll()
+                        .antMatchers("/category/**")
+                        .permitAll()
                 )
                 /* AnyRequest Need Auth */
                 .authorizeRequests(req -> req
