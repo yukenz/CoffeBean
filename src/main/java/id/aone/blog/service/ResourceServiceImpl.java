@@ -9,6 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 public class ResourceServiceImpl implements ResourceService {
 
@@ -79,6 +80,28 @@ public class ResourceServiceImpl implements ResourceService {
         } catch (Exception e) {
             return Optional.empty();
         }
+    }
+
+    @Override
+    public Stream<Path> streamDirList(String dirResource) {
+
+
+        try {
+            URI uri = this.getClass().getClassLoader()
+                    .getResource(dirResource).toURI();
+            Path path = Paths.get(uri);
+
+            if (!Files.isDirectory(path)) {
+                throw new IOException("Path tidak mengarah ke file");
+            }
+
+            return Files.list(path);
+
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return Stream.empty();
+        }
+
     }
 
 }

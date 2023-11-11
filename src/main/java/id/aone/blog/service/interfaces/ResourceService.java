@@ -6,15 +6,16 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.file.Path;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 @Service
 public interface ResourceService {
 
     enum PATH {
         POST("markdown/post/"),
-        AUTHOR("markdown/author/"),
-        CATEGORY("markdown/category/");
+        AUTHOR("markdown/author/");
 
         PATH(String path) {
             this.path = path;
@@ -75,5 +76,6 @@ public interface ResourceService {
 
     Optional<OutputStream> getOutputStream(String pathResource);
 
+    Stream<Path> streamDirList(String dirResource);
 
 }
