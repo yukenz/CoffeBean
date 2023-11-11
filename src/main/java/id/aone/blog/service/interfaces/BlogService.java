@@ -5,6 +5,8 @@ import id.aone.blog.model.BlogPostMetadata;
 import org.commonmark.node.Node;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public interface BlogService {
 
@@ -12,4 +14,5 @@ public interface BlogService {
 
     BlogPost getBlogPost(String fileName, String permalink);
 
+    List<BlogPost> getAllBlogPostByCategory(String categoryName);
 }
