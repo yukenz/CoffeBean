@@ -21,6 +21,11 @@ public class MarkdownServiceImpl implements MarkdownService {
     private HtmlRenderer htmlRenderer;
 
 
+    /**
+     * @throws RuntimeException Ketika tidak berhasil membaca Buffer
+     * @see id.aone.blog.service.interfaces.ResourceService
+     * @see Node
+     */
     @Override
     public Node readMarkdown(BufferedReader inputStream) {
 
@@ -51,6 +56,11 @@ public class MarkdownServiceImpl implements MarkdownService {
 
     }
 
+    /**
+     * @throws ParseException Jika gagal melakukan parse Date pada markdown dengan variabel publish_date
+     * @see BlogPostMetadata
+     * @see org.commonmark.ext.front.matter.YamlFrontMatterVisitor
+     */
     @Override
     public BlogPostMetadata createBlogPostMetaData(Map<String, List<String>> mapMetaData) {
 
