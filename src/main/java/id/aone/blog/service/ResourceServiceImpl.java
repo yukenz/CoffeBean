@@ -21,7 +21,7 @@ public class ResourceServiceImpl implements ResourceService {
      * @throws URISyntaxException   Jika gagal konversi resource ke URI
      * @throws IOException          Jika path tidak mengarah ke file, melainkan Direktori
      */
-    private Path getPath(String pathResource) throws URISyntaxException, IOException, NullPointerException {
+    private Path getFilePath(String pathResource) throws URISyntaxException, IOException, NullPointerException {
 
         URI uri = this.getClass().getClassLoader()
                 .getResource(pathResource).toURI();
@@ -40,7 +40,7 @@ public class ResourceServiceImpl implements ResourceService {
     public Optional<BufferedReader> getBufferReader(String pathResource) {
 
         try {
-            Path path = this.getPath(pathResource);
+            Path path = this.getFilePath(pathResource);
             return Optional.of(Files.newBufferedReader(path));
         } catch (Exception e) {
             return Optional.empty();
@@ -52,7 +52,7 @@ public class ResourceServiceImpl implements ResourceService {
     @Override
     public Optional<InputStream> getInputStream(String pathResource) {
         try {
-            Path path = this.getPath(pathResource);
+            Path path = this.getFilePath(pathResource);
             return Optional.of(Files.newInputStream(path));
         } catch (Exception e) {
             return Optional.empty();
@@ -63,7 +63,7 @@ public class ResourceServiceImpl implements ResourceService {
     @Override
     public Optional<BufferedWriter> getBufferedWriter(String pathResource) {
         try {
-            Path path = this.getPath(pathResource);
+            Path path = this.getFilePath(pathResource);
             return Optional.of(Files.newBufferedWriter(path));
         } catch (Exception e) {
             return Optional.empty();
@@ -74,7 +74,7 @@ public class ResourceServiceImpl implements ResourceService {
     @Override
     public Optional<OutputStream> getOutputStream(String pathResource) {
         try {
-            Path path = this.getPath(pathResource);
+            Path path = this.getFilePath(pathResource);
             return Optional.of(Files.newOutputStream(path));
         } catch (Exception e) {
             return Optional.empty();
